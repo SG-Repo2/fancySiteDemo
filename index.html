@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hydro University industrial pump training landing page prototype."
+    />
+    <title>Hydro University | Empowered Through Knowledge</title>
+    <link rel="preload" href="iStock-1272281703.jpg" as="image" />
+    <link rel="preload" href="overviewimage1.png" as="image" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"
+    ></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-labelledby="hero-title" data-asset-reference="hero-bg.webp">
+        <div class="hero__background" aria-hidden="true"></div>
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <header class="site-header page-shell" aria-label="Hydro University">
+          <a class="site-brand" href="#hero-title" aria-label="Hydro University home">
+            <span class="site-brand__mark">H</span>
+            <span>Hydro University</span>
+          </a>
+          <div class="site-header__status" aria-hidden="true">
+            <span></span>
+            Online pump training
+          </div>
+        </header>
+
+        <div class="hero__content page-shell">
+          <p class="hero__eyebrow">Hydro University</p>
+          <h1 id="hero-title" aria-label="Empowered Through Knowledge">
+            <span class="hero-title__line"><span>Empowered</span></span>
+            <span class="hero-title__line"><span>Through</span></span>
+            <span class="hero-title__line"><span>Knowledge</span></span>
+          </h1>
+          <p class="hero__copy">
+            Industrial pump expertise delivered through practical online learning.
+          </p>
+          <a class="button button--primary hero__button" href="#courses">
+            Explore Courses
+          </a>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true" data-asset-reference="pump-cutaway.png">
+          <img
+            class="pump-cutaway"
+            src="overviewimage1.png"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+
+        <div class="hero__systems" aria-hidden="true">
+          <div class="system-card system-card--primary">
+            <span class="system-card__label">Module 01</span>
+            <strong>Pump Systems</strong>
+            <div class="system-card__meter"><span></span></div>
+          </div>
+          <div class="system-card system-card--offset">
+            <span class="system-card__label">Signal</span>
+            <strong>Reliability</strong>
+            <div class="system-card__meter"><span></span></div>
+          </div>
+          <div class="system-card">
+            <span class="system-card__label">Practice</span>
+            <strong>Maintenance</strong>
+            <div class="system-card__meter"><span></span></div>
+          </div>
+          <div class="system-rail">
+            <span class="system-node system-node--one"></span>
+            <span class="system-node system-node--two"></span>
+            <span class="system-node system-node--three"></span>
+          </div>
+        </div>
+
+        <div class="hero__scroll-cue" aria-hidden="true">
+          <span></span>
+        </div>
+      </section>
+
+      <section class="training section-pad" id="courses" aria-labelledby="training-title">
+        <div class="training__inner page-shell">
+          <div class="training__media" data-asset-reference="training-scene.webp">
+            <img
+              src="bodyImage1.png"
+              alt="Hydro University online training scene inside an industrial pump facility."
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="training__content">
+            <p class="section-kicker">Applied Pump Education</p>
+            <h2 id="training-title">Training Built for Real Equipment</h2>
+            <p>
+              Hydro University courses are developed by industry professionals with
+              decades of experience in pump systems, maintenance, reliability, and
+              condition monitoring.
+            </p>
+
+            <div class="feature-grid" aria-label="Training features">
+              <article class="feature-card">
+                <span class="feature-card__index">01</span>
+                <h3>Expert-Led</h3>
+              </article>
+              <article class="feature-card">
+                <span class="feature-card__index">02</span>
+                <h3>Self-Paced</h3>
+              </article>
+              <article class="feature-card">
+                <span class="feature-card__index">03</span>
+                <h3>Industry-Tested</h3>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-band section-pad" aria-label="Hydro University impact">
+        <div class="stats-band__inner page-shell">
+          <div class="stat">
+            <div class="stat__value">
+              <span class="stat__number" data-count="60">0</span><span>+</span>
+            </div>
+            <p>Years Industry Experience</p>
+          </div>
+
+          <div class="stat">
+            <div class="stat__value">
+              <span class="stat__number" data-count="1000">0</span><span>+</span>
+            </div>
+            <p>Professionals Trained</p>
+          </div>
+
+          <div class="stat">
+            <div class="stat__value stat__value--word">Global</div>
+            <p>Access</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta section-pad" aria-labelledby="cta-title">
+        <div class="final-cta__inner page-shell">
+          <p class="section-kicker">Build Practical Fluency</p>
+          <h2 id="cta-title">Ready to Advance Your Expertise?</h2>
+          <a class="button button--secondary" href="#courses">View Course Catalog</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
