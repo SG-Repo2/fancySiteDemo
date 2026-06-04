@@ -5,164 +5,500 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Hydro University industrial pump training landing page prototype."
+      content="Four Star Mushrooms — Chicago's hidden underground farm. Gourmet mushrooms grown beneath the city, spore to plate."
     />
-    <title>Hydro University | Empowered Through Knowledge</title>
-    <link rel="preload" href="iStock-1272281703.jpg" as="image" />
-    <link rel="preload" href="overviewimage1.png" as="image" />
+    <title>Four Star Mushrooms | Chicago Grows Beneath Chicago</title>
+
+    <!-- Hero is code-drawn (CSS gradients + street grid); no critical image to
+         preload. Drop a real hero asset into .hero__bg via image-set when ready. -->
+
     <link rel="stylesheet" href="style.css" />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"
-    ></script>
+
+    <!-- FOUC guard: hide intro elements until JS sets their start state.
+         Failsafe timeout reveals everything even if the CDN never loads. -->
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduce) {
+          d.classList.add("is-loading");
+          window.setTimeout(function () {
+            d.classList.remove("is-loading");
+          }, 2600);
+        }
+      })();
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
     <script defer src="script.js"></script>
   </head>
   <body>
-    <main>
-      <section class="hero" aria-labelledby="hero-title" data-asset-reference="hero-bg.webp">
-        <div class="hero__background" aria-hidden="true"></div>
-        <div class="hero__shade" aria-hidden="true"></div>
+    <a class="skip-link" href="#machine">Skip to content</a>
 
-        <header class="site-header page-shell" aria-label="Hydro University">
-          <a class="site-brand" href="#hero-title" aria-label="Hydro University home">
-            <span class="site-brand__mark">H</span>
-            <span>Hydro University</span>
+    <!-- ===== HOST CHROME — hydroinc.com header, baked in for the embed =====
+         The gold swirl is an inline-SVG stand-in for the real Hydro logo;
+         drop the official asset in /img and swap this <svg> for an <img>. -->
+    <header class="nav" aria-label="Four Star Mushrooms">
+      <div class="nav__brandbar">
+        <div class="nav__brandbar-inner shell">
+          <a class="hydromark" href="#top" aria-label="Four Star Mushrooms home">
+            <svg class="hydromark__swirl" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="15.5" pathLength="99" />
+            </svg>
+            <span class="hydromark__word">Four&nbsp;Star<sup>®</sup></span>
           </a>
-          <div class="site-header__status" aria-hidden="true">
-            <span></span>
-            Online pump training
-          </div>
-        </header>
-
-        <div class="hero__content page-shell">
-          <p class="hero__eyebrow">Hydro University</p>
-          <h1 id="hero-title" aria-label="Empowered Through Knowledge">
-            <span class="hero-title__line"><span>Empowered</span></span>
-            <span class="hero-title__line"><span>Through</span></span>
-            <span class="hero-title__line"><span>Knowledge</span></span>
-          </h1>
-          <p class="hero__copy">
-            Industrial pump expertise delivered through practical online learning.
-          </p>
-          <a class="button button--primary hero__button" href="#courses">
-            Explore Courses
-          </a>
+          <p class="hydromark__tag">Gourmet mushrooms grown beneath Chicago · Fulton Market</p>
+          <a class="btn btn--gold nav__cta" href="#enroll">Order</a>
         </div>
+      </div>
+      <div class="nav__menubar">
+        <nav class="nav__menu shell" aria-label="Four Star site">
+          <a href="#top">The City</a>
+          <a href="#machine">The Network</a>
+          <a href="#failure">How We Grow</a>
+          <a href="#diagnostics">Climate</a>
+          <a href="#curriculum">Ecosystem</a>
+          <a href="#proof">Sustainability</a>
+          <a href="#instructors">The Farm</a>
+          <a href="#enroll">Shop</a>
+          <span class="nav__search" aria-hidden="true">⌕</span>
+        </nav>
+      </div>
+    </header>
 
-        <div class="hero__visual" aria-hidden="true" data-asset-reference="pump-cutaway.png">
-          <img
-            class="pump-cutaway"
-            src="overviewimage1.png"
-            alt=""
-            decoding="async"
-            fetchpriority="high"
-          />
-        </div>
+    <!-- ===================== CHAPTER PROGRESS RAIL ===================== -->
+    <aside class="rail" aria-hidden="true">
+      <a class="rail__dot" href="#top" data-label="The City"><i></i></a>
+      <a class="rail__dot" href="#machine" data-label="The Network"><i></i></a>
+      <a class="rail__dot" href="#failure" data-label="How We Grow"><i></i></a>
+      <a class="rail__dot" href="#diagnostics" data-label="Climate"><i></i></a>
+      <a class="rail__dot" href="#curriculum" data-label="Ecosystem"><i></i></a>
+      <a class="rail__dot" href="#proof" data-label="Sustainability"><i></i></a>
+      <a class="rail__dot" href="#instructors" data-label="The Farm"><i></i></a>
+      <a class="rail__dot" href="#enroll" data-label="Shop"><i></i></a>
+      <span class="rail__progress"><b></b></span>
+    </aside>
 
-        <div class="hero__systems" aria-hidden="true">
-          <div class="system-card system-card--primary">
-            <span class="system-card__label">Module 01</span>
-            <strong>Pump Systems</strong>
-            <div class="system-card__meter"><span></span></div>
-          </div>
-          <div class="system-card system-card--offset">
-            <span class="system-card__label">Signal</span>
-            <strong>Reliability</strong>
-            <div class="system-card__meter"><span></span></div>
-          </div>
-          <div class="system-card">
-            <span class="system-card__label">Practice</span>
-            <strong>Maintenance</strong>
-            <div class="system-card__meter"><span></span></div>
-          </div>
-          <div class="system-rail">
-            <span class="system-node system-node--one"></span>
-            <span class="system-node system-node--two"></span>
-            <span class="system-node system-node--three"></span>
-          </div>
-        </div>
+    <main id="top">
+      <!-- ====================== 001 — HERO ====================== -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__glow" aria-hidden="true"></div>
 
-        <div class="hero__scroll-cue" aria-hidden="true">
-          <span></span>
-        </div>
-      </section>
-
-      <section class="training section-pad" id="courses" aria-labelledby="training-title">
-        <div class="training__inner page-shell">
-          <div class="training__media" data-asset-reference="training-scene.webp">
-            <img
-              src="bodyImage1.png"
-              alt="Hydro University online training scene inside an industrial pump facility."
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-
-          <div class="training__content">
-            <p class="section-kicker">Applied Pump Education</p>
-            <h2 id="training-title">Training Built for Real Equipment</h2>
-            <p>
-              Hydro University courses are developed by industry professionals with
-              decades of experience in pump systems, maintenance, reliability, and
-              condition monitoring.
+        <div class="hero__inner shell">
+          <div class="hero__copy">
+            <p class="chapter reveal-intro"><span class="chapter__no">001</span> The city</p>
+            <h1 id="hero-title" aria-label="Chicago grows beneath Chicago">
+              <span class="line reveal-intro"><span>Chicago</span></span>
+              <span class="line reveal-intro"><span>Grows Beneath</span></span>
+              <span class="line reveal-intro"><span>Chicago</span></span>
+            </h1>
+            <p class="hero__lead reveal-intro">
+              Below Fulton Market, in the dark and the damp, a second city is growing.
+              Four Star raises gourmet mushrooms <em>underground</em> — spore to plate,
+              block by block beneath the streets.
             </p>
+            <div class="hero__actions reveal-intro">
+              <a class="btn btn--gold" href="#machine">Enter the network</a>
+              <a class="btn btn--ghost" href="#failure">How we grow</a>
+            </div>
+          </div>
 
-            <div class="feature-grid" aria-label="Training features">
-              <article class="feature-card">
-                <span class="feature-card__index">01</span>
-                <h3>Expert-Led</h3>
-              </article>
-              <article class="feature-card">
-                <span class="feature-card__index">02</span>
-                <h3>Self-Paced</h3>
-              </article>
-              <article class="feature-card">
-                <span class="feature-card__index">03</span>
-                <h3>Industry-Tested</h3>
-              </article>
+          <!-- Live condition-monitoring panel (repurposed system cards) -->
+          <div class="monitor reveal-intro" aria-hidden="true">
+            <div class="monitor__head">
+              <span class="monitor__tag">Grow&nbsp;Room 02 · live</span>
+              <span class="monitor__state" data-state="ok">Fruiting</span>
+            </div>
+            <svg class="monitor__chart" viewBox="0 0 320 120" preserveAspectRatio="none" role="img">
+              <line class="alarm-line" x1="0" y1="34" x2="320" y2="34" />
+              <path class="trend" d="M0,96 L40,92 L80,95 L120,86 L160,88 L200,74 L240,70 L280,52 L320,40" />
+              <circle class="trend__head" cx="320" cy="40" r="4" />
+            </svg>
+            <div class="monitor__readouts">
+              <div class="readout"><span class="readout__k">Temperature</span><span class="readout__v" data-metric="temp">18.5 <i>°C</i></span><span class="meter"><b style="--w:62%"></b></span></div>
+              <div class="readout"><span class="readout__k">Humidity</span><span class="readout__v" data-metric="rh">92 <i>%</i></span><span class="meter"><b style="--w:88%"></b></span></div>
+              <div class="readout"><span class="readout__k">CO₂</span><span class="readout__v" data-metric="co2">1,100 <i>ppm</i></span><span class="meter meter--warn"><b style="--w:54%"></b></span></div>
+            </div>
+            <p class="monitor__foot">Illustrative climate from the fruiting block — every variety grows to its own recipe.</p>
+          </div>
+        </div>
+
+        <a class="hero__cue" href="#machine" aria-label="Scroll to begin"><span></span></a>
+      </section>
+
+      <!-- ================== 002 — THE MACHINE (exploded) ================== -->
+      <section class="machine" id="machine" aria-labelledby="machine-title">
+        <div class="machine__stage">
+          <div class="machine__intro shell">
+            <p class="chapter"><span class="chapter__no">002</span> The machine</p>
+            <h2 id="machine-title">One pump.<br />Five places it lives or dies.</h2>
+            <p class="machine__hint" aria-hidden="true">Scroll to take it apart ↓</p>
+          </div>
+
+          <div class="machine__scene" aria-hidden="true">
+            <!-- Hand-built schematic so every component is its own animatable layer -->
+            <svg class="pump" viewBox="0 0 1040 640" role="img" aria-label="Centrifugal pump cross-section">
+              <defs>
+                <path id="hvane" d="M330,266 Q374,256 398,230" />
+              </defs>
+
+              <!-- baseplate -->
+              <g class="pump-part" data-part="base">
+                <rect class="fill-2" x="150" y="540" width="740" height="30" rx="6" />
+                <rect class="fill-3" x="210" y="570" width="60" height="22" rx="3" />
+                <rect class="fill-3" x="760" y="570" width="60" height="22" rx="3" />
+                <line class="lead" x1="520" y1="555" x2="520" y2="612" />
+                <text class="plabel" x="520" y="628" text-anchor="middle">Baseplate · alignment datum</text>
+              </g>
+
+              <!-- shaft (behind) -->
+              <g class="pump-part" data-part="shaft">
+                <rect class="stroke-line fill-3" x="330" y="290" width="610" height="20" rx="6" />
+                <line class="lead" x1="560" y1="300" x2="560" y2="232" />
+                <text class="plabel" x="560" y="222" text-anchor="middle">Shaft &amp; coupling</text>
+              </g>
+
+              <!-- volute casing -->
+              <g class="pump-part" data-part="casing">
+                <circle class="casing-outer" cx="330" cy="300" r="158" />
+                <circle class="casing-inner" cx="330" cy="300" r="120" />
+                <line class="lead" x1="206" y1="206" x2="150" y2="150" />
+                <text class="plabel" x="146" y="140" text-anchor="end">Volute casing</text>
+              </g>
+
+              <!-- suction nozzle -->
+              <g class="pump-part" data-part="suction">
+                <rect class="stroke-line fill-2" x="40" y="272" width="170" height="56" rx="6" />
+                <rect class="fill-3" x="36" y="262" width="16" height="76" rx="3" />
+                <line class="lead" x1="120" y1="328" x2="120" y2="392" />
+                <text class="plabel" x="120" y="408" text-anchor="middle">Suction · NPSH</text>
+              </g>
+
+              <!-- discharge nozzle -->
+              <g class="pump-part" data-part="discharge">
+                <rect class="stroke-line fill-2" x="296" y="56" width="68" height="120" rx="6" />
+                <rect class="fill-3" x="286" y="52" width="88" height="16" rx="3" />
+                <line class="lead" x1="364" y1="96" x2="428" y2="96" />
+                <text class="plabel" x="438" y="100" text-anchor="start">Discharge</text>
+              </g>
+
+              <!-- bearing housing + bearings -->
+              <g class="pump-part" data-part="bearings">
+                <rect class="stroke-line fill-2" x="560" y="218" width="350" height="164" rx="16" />
+                <g class="bearing" transform="translate(650 300)">
+                  <circle class="brg-outer" r="46" />
+                  <circle class="brg-inner" r="20" />
+                  <circle class="ball" cx="0" cy="-33" r="6" /><circle class="ball" cx="29" cy="-16" r="6" />
+                  <circle class="ball" cx="29" cy="16" r="6" /><circle class="ball" cx="0" cy="33" r="6" />
+                  <circle class="ball" cx="-29" cy="16" r="6" /><circle class="ball" cx="-29" cy="-16" r="6" />
+                </g>
+                <g class="bearing" transform="translate(820 300)">
+                  <circle class="brg-outer" r="46" />
+                  <circle class="brg-inner" r="20" />
+                  <circle class="ball" cx="0" cy="-33" r="6" /><circle class="ball" cx="29" cy="-16" r="6" />
+                  <circle class="ball" cx="29" cy="16" r="6" /><circle class="ball" cx="0" cy="33" r="6" />
+                  <circle class="ball" cx="-29" cy="16" r="6" /><circle class="ball" cx="-29" cy="-16" r="6" />
+                </g>
+                <line class="lead" x1="735" y1="382" x2="735" y2="446" />
+                <text class="plabel" x="735" y="462" text-anchor="middle">Bearings · L10 life</text>
+              </g>
+
+              <!-- mechanical seal -->
+              <g class="pump-part" data-part="seal">
+                <rect class="seal-body" x="452" y="266" width="42" height="68" rx="4" />
+                <line class="seal-face" x1="473" y1="270" x2="473" y2="330" />
+                <line class="lead" x1="473" y1="266" x2="540" y2="196" />
+                <text class="plabel" x="548" y="190" text-anchor="start">Mechanical seal · API plan</text>
+              </g>
+
+              <!-- impeller (front, spins) -->
+              <g class="pump-part" data-part="impeller">
+                <circle class="imp-shroud" cx="330" cy="300" r="102" />
+                <g class="imp-vanes">
+                  <use href="#hvane" /><use href="#hvane" transform="rotate(60 330 300)" />
+                  <use href="#hvane" transform="rotate(120 330 300)" /><use href="#hvane" transform="rotate(180 330 300)" />
+                  <use href="#hvane" transform="rotate(240 330 300)" /><use href="#hvane" transform="rotate(300 330 300)" />
+                </g>
+                <circle class="imp-hub" cx="330" cy="300" r="32" />
+                <line class="lead" x1="330" y1="402" x2="330" y2="470" />
+                <text class="plabel" x="330" y="486" text-anchor="middle">Impeller · BEP</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- part stepper (synced to scrub, clickable) -->
+          <ol class="parts shell" aria-hidden="true">
+            <li class="part-step" data-target="impeller"><span>01</span> Impeller<i>Where efficiency is won or lost (BEP)</i></li>
+            <li class="part-step" data-target="seal"><span>02</span> Mechanical seal<i>The #1 reason pumps come apart</i></li>
+            <li class="part-step" data-target="bearings"><span>03</span> Bearings<i>Load, speed &amp; the L10 life clock</i></li>
+            <li class="part-step" data-target="shaft"><span>04</span> Shaft &amp; coupling<i>Alignment, the silent killer</i></li>
+            <li class="part-step" data-target="casing"><span>05</span> Volute casing<i>Pressure, recirculation &amp; flow</i></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ================== 003 — FAILURE (case file) ================== -->
+      <section class="case" id="failure" aria-labelledby="case-title">
+        <div class="case__inner shell">
+          <header class="case__head">
+            <p class="chapter chapter--alarm"><span class="chapter__no">003</span> Case file · FRP-0212</p>
+            <h2 id="case-title">It didn't fail at 2&nbsp;a.m. It failed three weeks earlier.</h2>
+          </header>
+
+          <div class="case__track" role="list">
+            <article class="case__card" role="listitem" data-phase="symptom">
+              <span class="case__tag">Symptom</span>
+              <h3>Overnight high-vibration trip</h3>
+              <p>Boiler-feed pump P-104 trips on high vibration at 02:14. Operations resets,
+                it trips again in 40 minutes. Production is down 6 hours.</p>
+              <span class="case__metric"><b>4.1</b> mm/s <i>and climbing</i></span>
+            </article>
+            <article class="case__card" role="listitem" data-phase="cause">
+              <span class="case__tag">Root cause</span>
+              <h3>0.4&nbsp;mm of soft-foot misalignment</h3>
+              <p>The vibration signature peaked at 2× running speed — the fingerprint of
+                misalignment. A coupling check confirmed it. The bearing was a symptom,
+                not the disease.</p>
+              <span class="case__metric"><b>2×</b> RPM <i>dominant peak</i></span>
+            </article>
+            <article class="case__card" role="listitem" data-phase="fix">
+              <span class="case__tag">Corrective action</span>
+              <h3>Laser alignment + soft-foot correction</h3>
+              <p>Shims under the inboard foot, alignment to 0.05&nbsp;mm. Vibration dropped
+                to 1.2&nbsp;mm/s. The seal and bearing that were "about to fail" were never
+                the problem.</p>
+              <span class="case__metric"><b>1.2</b> mm/s <i>after</i></span>
+            </article>
+            <article class="case__card case__card--cta" role="listitem" data-phase="learn">
+              <span class="case__tag">Learn it</span>
+              <h3>Precision Shaft Alignment</h3>
+              <p>The exact diagnosis-to-fix workflow above, taught end to end — soft-foot,
+                rim-and-face, laser alignment, and reading the vibration that gives it away.</p>
+              <a class="btn btn--gold" href="#enroll">Open module →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== 004 — DIAGNOSTICS ================== -->
+      <section class="diag" id="diagnostics" aria-labelledby="diag-title">
+        <div class="diag__inner shell">
+          <header class="diag__head">
+            <p class="chapter"><span class="chapter__no">004</span> Diagnostics</p>
+            <h2 id="diag-title">The machine is always talking. We teach the language.</h2>
+          </header>
+
+          <div class="diag__grid">
+            <!-- Vibration FFT -->
+            <figure class="panel fft">
+              <figcaption class="panel__title">Vibration signature <span>hover a peak</span></figcaption>
+              <svg class="fft__svg" viewBox="0 0 460 240" role="img" aria-label="Vibration FFT spectrum">
+                <g class="fft__axes">
+                  <line x1="40" y1="200" x2="445" y2="200" />
+                  <line x1="40" y1="20" x2="40" y2="200" />
+                </g>
+                <g class="fft__peaks">
+                  <g class="fft-peak" data-fault="Imbalance" data-detail="High 1× running-speed peak — mass imbalance on the rotor.">
+                    <rect class="hit" x="84" y="20" width="40" height="180" />
+                    <path class="peak" d="M104,200 L100,96 Q104,84 108,96 Z" />
+                    <text class="lbl" x="104" y="214" text-anchor="middle">1×</text>
+                  </g>
+                  <g class="fft-peak is-flag" data-fault="Misalignment" data-detail="Dominant 2× peak — the classic fingerprint of shaft misalignment.">
+                    <rect class="hit" x="150" y="20" width="40" height="180" />
+                    <path class="peak" d="M170,200 L165,56 Q170,42 175,56 Z" />
+                    <text class="lbl" x="170" y="214" text-anchor="middle">2×</text>
+                  </g>
+                  <g class="fft-peak" data-fault="Looseness" data-detail="3× and harmonics — mechanical looseness or a worn fit.">
+                    <rect class="hit" x="216" y="20" width="40" height="180" />
+                    <path class="peak" d="M236,200 L232,132 Q236,122 240,132 Z" />
+                    <text class="lbl" x="236" y="214" text-anchor="middle">3×</text>
+                  </g>
+                  <g class="fft-peak" data-fault="Bearing defect" data-detail="High-frequency, non-synchronous cluster — bearing race or element defect.">
+                    <rect class="hit" x="330" y="20" width="90" height="180" />
+                    <path class="peak" d="M350,200 L348,150 L352,150 Z M368,200 L366,140 L370,140 Z M386,200 L384,158 L388,158 Z M404,200 L402,146 L406,146 Z" />
+                    <text class="lbl" x="378" y="214" text-anchor="middle">BPFO</text>
+                  </g>
+                </g>
+              </svg>
+              <p class="fft__readout" aria-live="polite"><b>Misalignment</b> — Dominant 2× peak — the classic fingerprint of shaft misalignment.</p>
+            </figure>
+
+            <!-- P-F curve -->
+            <figure class="panel pf">
+              <figcaption class="panel__title">The P-F interval <span>catch it early</span></figcaption>
+              <svg class="pf__svg" viewBox="0 0 460 240" role="img" aria-label="P-F curve">
+                <path class="pf__area" d="M40,180 C150,176 250,150 330,96 C370,66 400,36 430,24 L430,210 L40,210 Z" />
+                <path class="pf__curve" d="M40,180 C150,176 250,150 330,96 C370,66 400,36 430,24" />
+                <g class="pf__pts">
+                  <g class="pf-pt" style="--d:0"><circle cx="150" cy="176" r="6" /><text x="150" y="166" text-anchor="middle">Vibration</text></g>
+                  <g class="pf-pt" style="--d:1"><circle cx="232" cy="158" r="6" /><text x="232" y="148" text-anchor="middle">Ultrasonic</text></g>
+                  <g class="pf-pt" style="--d:2"><circle cx="300" cy="120" r="6" /><text x="300" y="110" text-anchor="middle">Oil analysis</text></g>
+                  <g class="pf-pt" style="--d:3"><circle cx="356" cy="78" r="6" /><text x="356" y="68" text-anchor="middle">Thermography</text></g>
+                  <g class="pf-pt" style="--d:4"><circle cx="408" cy="40" r="6" /><text x="408" y="30" text-anchor="middle">Audible</text></g>
+                </g>
+                <text class="pf__p" x="44" y="200">P · potential failure</text>
+                <text class="pf__f" x="426" y="20" text-anchor="end">F · functional failure</text>
+              </svg>
+              <p class="pf__note">The earlier on the curve you detect, the more time — and money — you keep. Hydro University lives on the left.</p>
+            </figure>
+
+            <!-- Pump-curve playground -->
+            <figure class="panel curve">
+              <figcaption class="panel__title">Pump-curve playground <span>drag the flow</span></figcaption>
+              <svg class="curve__svg" viewBox="0 0 460 240" role="img" aria-label="Head vs flow curve">
+                <line class="curve__axis" x1="40" y1="200" x2="440" y2="200" />
+                <line class="curve__axis" x1="40" y1="20" x2="40" y2="200" />
+                <path class="curve__hq" d="M44,52 C140,58 250,86 360,150 C390,168 410,184 432,196" />
+                <path class="curve__sys" d="M40,200 C160,190 300,150 432,72" />
+                <rect class="curve__bep" x="206" y="20" width="48" height="180" />
+                <circle class="curve__op" cx="230" cy="118" r="8" />
+                <text class="curve__beplbl" x="230" y="36" text-anchor="middle">BEP</text>
+              </svg>
+              <input class="curve__range" type="range" min="0" max="100" value="50" aria-label="Flow rate" />
+              <p class="curve__verdict" aria-live="polite"><b data-zone="ok">Near BEP</b> — minimal radial load, long seal &amp; bearing life.</p>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== 005 — CURRICULUM (skill tree) ================== -->
+      <section class="curric" id="curriculum" aria-labelledby="curric-title">
+        <div class="curric__inner shell">
+          <header class="curric__head">
+            <p class="chapter"><span class="chapter__no">005</span> Curriculum</p>
+            <h2 id="curric-title">A path, not a playlist.</h2>
+            <p class="curric__lead">From fundamentals to root-cause analysis — the anatomy you just
+              explored, mapped to the order a reliability career actually grows in.</p>
+          </header>
+
+          <svg class="tree" viewBox="0 0 1000 420" role="img" aria-label="Competency map">
+            <g class="tree__links">
+              <path d="M120,210 C220,210 220,110 320,110" />
+              <path d="M120,210 C220,210 220,310 320,310" />
+              <path d="M320,110 C440,110 440,80 560,80" />
+              <path d="M320,110 C440,110 440,180 560,180" />
+              <path d="M320,310 C440,310 440,300 560,300" />
+              <path d="M320,310 C440,310 440,360 560,360" />
+              <path d="M560,80 C720,80 720,210 820,210" />
+              <path d="M560,180 C720,180 720,210 820,210" />
+              <path d="M560,300 C720,300 720,210 820,210" />
+            </g>
+            <g class="tree__nodes">
+              <g class="node node--root" style="--i:0" transform="translate(120 210)"><circle r="30" /><text>Core</text></g>
+              <g class="node" style="--i:1" transform="translate(320 110)"><circle r="24" /><text>Pump basics</text></g>
+              <g class="node" style="--i:2" transform="translate(320 310)"><circle r="24" /><text>Maintenance</text></g>
+              <g class="node" style="--i:3" transform="translate(560 80)"><circle r="24" /><text>Hydraulics</text></g>
+              <g class="node" style="--i:4" transform="translate(560 180)"><circle r="24" /><text>Vibration</text></g>
+              <g class="node" style="--i:5" transform="translate(560 300)"><circle r="24" /><text>Alignment</text></g>
+              <g class="node" style="--i:6" transform="translate(560 360)"><circle r="24" /><text>Seals</text></g>
+              <g class="node node--goal" style="--i:7" transform="translate(820 210)"><circle r="30" /><text>RCFA</text></g>
+            </g>
+          </svg>
+
+          <div class="curric__filters" role="group" aria-label="Filter by role">
+            <button class="chip is-active" type="button">All</button>
+            <button class="chip" type="button">Operator</button>
+            <button class="chip" type="button">Millwright</button>
+            <button class="chip" type="button">Reliability Eng.</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== 006 — PROOF ================== -->
+      <section class="proof" id="proof" aria-label="Hydro University impact">
+        <div class="proof__grid-bg" aria-hidden="true"></div>
+        <div class="proof__inner shell">
+          <p class="chapter"><span class="chapter__no">006</span> Proof</p>
+          <div class="proof__stats">
+            <div class="stat">
+              <div class="stat__v"><span class="stat__n" data-count="260" data-prefix="$" data-suffix="K">$0K</span></div>
+              <p>Avg. cost of a single unplanned pump failure<i>Illustrative industry figure</i></p>
+            </div>
+            <div class="stat">
+              <div class="stat__v"><span class="stat__n" data-count="82" data-suffix="%">0%</span></div>
+              <p>Of pump failures are mechanical &amp; preventable<i>Illustrative</i></p>
+            </div>
+            <div class="stat">
+              <div class="stat__v"><span class="stat__n" data-count="1000" data-suffix="+">0</span></div>
+              <p>Reliability professionals trained<i>Program to date</i></p>
+            </div>
+            <div class="stat">
+              <div class="stat__v"><span class="stat__n" data-count="60" data-suffix="+">0</span></div>
+              <p>Combined years on real rotating equipment<i>Instructor faculty</i></p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="stats-band section-pad" aria-label="Hydro University impact">
-        <div class="stats-band__inner page-shell">
-          <div class="stat">
-            <div class="stat__value">
-              <span class="stat__number" data-count="60">0</span><span>+</span>
-            </div>
-            <p>Years Industry Experience</p>
+      <!-- ================== 007 — THE TRANSFER ================== -->
+      <section class="transfer" id="instructors" aria-labelledby="transfer-title">
+        <div class="transfer__inner shell">
+          <div class="transfer__media">
+            <picture>
+              <source type="image/avif" srcset="img/train-768.avif 768w, img/train-1280.avif 1280w" sizes="(max-width: 900px) 90vw, 46rem" />
+              <source type="image/webp" srcset="img/train-768.webp 768w, img/train-1280.webp 1280w" sizes="(max-width: 900px) 90vw, 46rem" />
+              <img src="img/train-1280.jpg" width="1672" height="941" alt="Hydro University instruction on the plant floor beside an industrial pump." loading="lazy" decoding="async" />
+            </picture>
           </div>
-
-          <div class="stat">
-            <div class="stat__value">
-              <span class="stat__number" data-count="1000">0</span><span>+</span>
+          <div class="transfer__body">
+            <p class="chapter"><span class="chapter__no">007</span> The transfer</p>
+            <h2 id="transfer-title">When the expert retires, the knowledge shouldn't walk out with them.</h2>
+            <p class="transfer__lead">Hydro University is built by people who spent careers on the floor —
+              so the tacit, hard-won judgment that usually leaves with a pension stays in your plant.</p>
+            <div class="people">
+              <button class="person" type="button" aria-label="Instructor bio">
+                <span class="person__front"><b>Reliability Lead</b><i>Rotating equipment</i></span>
+                <span class="person__back">30+ yrs · refinery &amp; power · CMRP <em>· Illustrative</em></span>
+              </button>
+              <button class="person" type="button" aria-label="Instructor bio">
+                <span class="person__front"><b>Vibration Analyst</b><i>Cat III</i></span>
+                <span class="person__back">Predictive programs across 40+ sites <em>· Illustrative</em></span>
+              </button>
+              <button class="person" type="button" aria-label="Instructor bio">
+                <span class="person__front"><b>Field Millwright</b><i>Precision maintenance</i></span>
+                <span class="person__back">Laser alignment &amp; seal install instructor <em>· Illustrative</em></span>
+              </button>
             </div>
-            <p>Professionals Trained</p>
-          </div>
-
-          <div class="stat">
-            <div class="stat__value stat__value--word">Global</div>
-            <p>Access</p>
           </div>
         </div>
       </section>
 
-      <section class="final-cta section-pad" aria-labelledby="cta-title">
-        <div class="final-cta__inner page-shell">
-          <p class="section-kicker">Build Practical Fluency</p>
-          <h2 id="cta-title">Ready to Advance Your Expertise?</h2>
-          <a class="button button--secondary" href="#courses">View Course Catalog</a>
+      <!-- ================== 008 — ENROLL ================== -->
+      <section class="enroll" id="enroll" aria-labelledby="enroll-title">
+        <div class="enroll__glow" aria-hidden="true"></div>
+        <div class="enroll__inner shell">
+          <p class="chapter"><span class="chapter__no">008</span> Enroll</p>
+          <h2 id="enroll-title">You've taken the pump apart.<br />Now learn to keep it running.</h2>
+          <div class="enroll__actions">
+            <a class="btn btn--gold btn--lg" href="#machine">Start a course</a>
+            <a class="btn btn--ghost btn--lg" href="#diagnostics">Book a team demo</a>
+          </div>
         </div>
       </section>
     </main>
+
+    <footer class="foot">
+      <div class="foot__inner shell">
+        <a class="foot__brand" href="#top" aria-label="Four Star Mushrooms home">
+          <svg class="hydromark__swirl hydromark__swirl--foot" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="15.5" pathLength="99" />
+          </svg>
+          <span class="foot__brandname">Four Star Mushrooms<i>Grown Beneath Chicago</i></span>
+        </a>
+        <nav class="foot__links" aria-label="Footer">
+          <a href="#machine">The Network</a>
+          <a href="#failure">How We Grow</a>
+          <a href="#diagnostics">Climate</a>
+          <a href="#curriculum">Ecosystem</a>
+          <a href="#enroll">Shop</a>
+        </nav>
+        <p class="foot__fine">© Four Star Mushrooms — Grown Beneath Chicago. Prototype · figures illustrative.</p>
+      </div>
+    </footer>
   </body>
 </html>
