@@ -1,38 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Hydro University delivers expert-led pump training through online courses, live webinars, workshops, and classroom seminars."
-    />
-    <title>Hydro University | Empowered Through Knowledge</title>
+<?php
+/**
+ * HydroU page template.
+ *
+ * The active theme supplies the site header and footer. Only the HydroU page
+ * body is owned by this plugin.
+ */
 
-    <link rel="stylesheet" href="style.css" />
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-    <script>
-      (function () {
-        var d = document.documentElement;
-        d.classList.add("js");
-        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (!reduce) {
-          d.classList.add("hydrou-is-loading");
-          window.setTimeout(function () {
-            d.classList.remove("hydrou-is-loading");
-          }, 2600);
-        }
-      })();
-    </script>
-
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#intro">Skip to content</a>
-    <main id="top" class="hydrou-page">
+get_header();
+?>
+<main id="top" class="hydrou-page">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__ribbon hero__ribbon--one" aria-hidden="true"></div>
         <div class="hero__ribbon hero__ribbon--two" aria-hidden="true"></div>
@@ -41,17 +21,17 @@
 
         <div class="hero__inner shell">
           <div class="hero__collage" aria-label="Hydro University training and product imagery">
-            <img class="collage-tile collage-tile--one reveal-intro" src="img/pdf-collage-1.png" width="180" height="84" alt="Online pump training course preview" />
-            <img class="collage-tile collage-tile--two reveal-intro" src="img/pdf-collage-2.png" width="120" height="138" alt="Instructor-led pump training equipment" />
-            <img class="collage-tile collage-tile--three reveal-intro" src="img/pdf-collage-3.png" width="150" height="102" alt="Digital pump simulation on a tablet" />
-            <img class="collage-tile collage-tile--four reveal-intro" src="img/pdf-collage-4.png" width="176" height="128" alt="Hands-on maintenance work on industrial equipment" />
-            <img class="collage-tile collage-tile--five reveal-intro" src="img/pdf-collage-5.png" width="118" height="132" alt="Instructor presenting pump components" />
-            <img class="collage-tile collage-tile--six reveal-intro" src="img/pdf-collage-6.png" width="162" height="214" alt="Blue industrial pump cutaway rendering" />
+            <img class="collage-tile collage-tile--one reveal-intro" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-collage-1.png' ); ?>" width="180" height="84" alt="Online pump training course preview" />
+            <img class="collage-tile collage-tile--two reveal-intro" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-collage-2.png' ); ?>" width="120" height="138" alt="Instructor-led pump training equipment" />
+            <img class="collage-tile collage-tile--three reveal-intro" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-collage-3.png' ); ?>" width="150" height="102" alt="Digital pump simulation on a tablet" />
+            <img class="collage-tile collage-tile--four reveal-intro" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-collage-4.png' ); ?>" width="176" height="128" alt="Hands-on maintenance work on industrial equipment" />
+            <img class="collage-tile collage-tile--five reveal-intro" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-collage-5.png' ); ?>" width="118" height="132" alt="Instructor presenting pump components" />
+            <img class="collage-tile collage-tile--six reveal-intro" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-collage-6.png' ); ?>" width="162" height="214" alt="Blue industrial pump cutaway rendering" />
           </div>
 
           <div class="hero__lockup reveal-intro">
             <h1 id="hero-title" class="visually-hidden">Hydro University</h1>
-            <img src="img/pdf-hydrou-lockup.png" width="502" height="113" alt="Hydro University. Empowered Through Knowledge." />
+            <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-hydrou-lockup.png' ); ?>" width="502" height="113" alt="Hydro University. Empowered Through Knowledge." />
           </div>
 
           <nav class="quicklinks reveal-intro" aria-label="Hydro University quick links">
@@ -141,7 +121,7 @@
             >
               <span class="course-card__price">$423.00</span>
               <span class="course-card__media">
-                <img src="img/pdf-course-3345-clean.png" width="218" height="130" alt="Horizontal pump train used in the 3345 course" loading="lazy" decoding="async" />
+                <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-course-3345-clean.png' ); ?>" width="218" height="130" alt="Horizontal pump train used in the 3345 course" loading="lazy" decoding="async" />
               </span>
               <h3>3345 Generic Failure Modes - Horizontal Pump Configurations</h3>
               <span class="course-card__external">
@@ -158,7 +138,7 @@
             >
               <span class="course-card__price">$423.00</span>
               <span class="course-card__media">
-                <img src="img/pdf-course-3110-clean.png" width="212" height="118" alt="Industrial pumps used in the 3110 course" loading="lazy" decoding="async" />
+                <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-course-3110-clean.png' ); ?>" width="212" height="118" alt="Industrial pumps used in the 3110 course" loading="lazy" decoding="async" />
               </span>
               <h3>3110 Pump Fundamentals for Engineers</h3>
               <span class="course-card__external">
@@ -175,7 +155,7 @@
             >
               <span class="course-card__price">$171.00</span>
               <span class="course-card__media">
-                <img src="img/pdf-course-2140-clean.png" width="196" height="134" alt="Rolling element bearing used in the 2140 course" loading="lazy" decoding="async" />
+                <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-course-2140-clean.png' ); ?>" width="196" height="134" alt="Rolling element bearing used in the 2140 course" loading="lazy" decoding="async" />
               </span>
               <h3>2140 Rolling Element Bearings</h3>
               <span class="course-card__external">
@@ -192,7 +172,7 @@
             >
               <span class="course-card__price">$423.00</span>
               <span class="course-card__media">
-                <img src="img/pdf-course-3170-clean.png" width="178" height="140" alt="Vibration analysis visualization used in the 3170 course" loading="lazy" decoding="async" />
+                <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-course-3170-clean.png' ); ?>" width="178" height="140" alt="Vibration analysis visualization used in the 3170 course" loading="lazy" decoding="async" />
               </span>
               <h3>3170 Vibration Fundamentals</h3>
               <span class="course-card__external">
@@ -228,7 +208,7 @@
             <h2>Meet our Experts</h2>
             <div class="expert-list">
               <article class="expert">
-                <img src="img/pdf-expert-bob.png" width="100" height="120" alt="Bob Jennings" loading="lazy" decoding="async" />
+                <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-expert-bob.png' ); ?>" width="100" height="120" alt="Bob Jennings" loading="lazy" decoding="async" />
                 <div>
                   <h3>Bob Jennings</h3>
                   <p class="expert__role">Corporate Trainer</p>
@@ -236,7 +216,7 @@
                 </div>
               </article>
               <article class="expert">
-                <img src="img/pdf-expert-mike.png" width="100" height="120" alt="Mike Mancini" loading="lazy" decoding="async" />
+                <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/pdf-expert-mike.png' ); ?>" width="100" height="120" alt="Mike Mancini" loading="lazy" decoding="async" />
                 <div>
                   <h3>Mike Mancini</h3>
                   <p class="expert__role">President, Total Solutions</p>
@@ -272,7 +252,7 @@
           </article>
 
           <figure class="why-media">
-            <img src="img/hero-1280.webp" width="1280" height="720" alt="Close-up view of industrial pump components" loading="lazy" decoding="async" />
+            <img src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/hero-1280.webp' ); ?>" width="1280" height="720" alt="Close-up view of industrial pump components" loading="lazy" decoding="async" />
           </figure>
         </div>
       </section>
@@ -293,7 +273,7 @@
           </div>
           <div class="impel__copy" data-reveal>
             <h2 id="impel-title" class="visually-hidden">IMPEL</h2>
-            <img class="impel__logo" src="img/impel-logo.png" width="1708" height="544" alt="IMPEL" loading="lazy" decoding="async" />
+            <img class="impel__logo" src="<?php echo esc_url( HYDROU_PREVIEW_URL . 'assets/img/impel-logo.png' ); ?>" width="1708" height="544" alt="IMPEL" loading="lazy" decoding="async" />
             <p>
               IMPEL® is an interactive, digital maintenance platform that replicates
               pump design and installation to clearly illustrate each step of the
@@ -359,6 +339,5 @@
         </div>
       </section>
     </main>
-
-  </body>
-</html>
+<?php
+get_footer();
